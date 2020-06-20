@@ -65,7 +65,7 @@ public class TrainPanel extends ModelPanel {
         train.setTrainId(train_id);
         train.setTrainType(train_type);
         System.out.println(train_id+ " " + train_type);
-        
+        //First, the train information is inserted, and then the train foreign keys for both stations and seats can be inserted
        // MySQLManager.getInstance().dao().insertTrain(train);
         DBManager.getInstance().dao().insertTrain(train);
         // load passby info and station info
@@ -87,7 +87,7 @@ public class TrainPanel extends ModelPanel {
             p.setStationOrder(i + 1);
             passby.add(p);
         }
-      
+      //Insert site information
         Iterator it=station.iterator();
         while(it.hasNext()){
         	// MySQLManager.getInstance().dao().insertStation((Station)it.next());
@@ -122,7 +122,7 @@ public class TrainPanel extends ModelPanel {
         new XDialog() {
             @Override
             protected void initComponents(){
-                
+                //"Train number "," Train type ", "Through station"
                 String[] columns = Constants.ColumnName.TRAIN;
                 addField(columns[0], "");
                 addField(columns[1], "");
@@ -170,7 +170,7 @@ public class TrainPanel extends ModelPanel {
         new XDialog() {
             @Override
             protected void initComponents(){
-                
+               // "Train number "," Train type ", "Through station" 
                 String[] columns = Constants.ColumnName.TRAIN;
                 addField(columns[0], train.getTrainId());
                 addField(columns[1], train.getTrainType());

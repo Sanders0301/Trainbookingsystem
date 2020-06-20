@@ -29,7 +29,7 @@ public class LoginFrame extends JFrame implements Measurable {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField usernameField, passwordField;
-	
+	//A drop-down box
 	private JComboBox managerTypeCB = new JComboBox();
 
 	public LoginFrame() {
@@ -38,7 +38,7 @@ public class LoginFrame extends JFrame implements Measurable {
 	}
 
 	private void initComponents() {
-		
+	//// Set the Windows decoration as you see it	
 		setDefaultLookAndFeelDecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -53,7 +53,7 @@ public class LoginFrame extends JFrame implements Measurable {
 		usernameField = contentPane.addHint("UserName");
 		passwordField = contentPane.addPasswordHint("Password");
 		managerTypeCB.addItem("Admin");
-		managerTypeCB.addItem("User");
+		managerTypeCB.addItem("User");//The conductor
 //		managerTypeCB.addItem("User");
 
 		JButton btnLogin = new JButton("Login");
@@ -71,7 +71,12 @@ public class LoginFrame extends JFrame implements Measurable {
 	private void clearPassword() {
 		passwordField.setText("");
 	}
-
+	/**
+	 * @Title: onLoginClicked
+	 * @Description: login
+	 * @param e 
+	 * @return void 
+	 */
 	
 	private void onLoginClicked(ActionEvent e) {
 		String username = usernameField.getText();
@@ -96,15 +101,16 @@ public class LoginFrame extends JFrame implements Measurable {
 						JOptionPane.showMessageDialog(null, "Login as admin");
 						WidgetUtils.popup(ManagerFrame.class);
 						dispose();
-						
+						//Set the server port number
 						Thread thread = new Thread(new TrainTicketServer());
 						thread.start();
 					} else if (Manager.TYPE_SELLER == manager.getManagerType()) {
-						
+						// WidgetUtils.popup(SellerFrame.class);
 						JOptionPane.showMessageDialog(null, "Wrong user type");
 					}
 				} else {
 					TrainTicketClient ttc = new TrainTicketClient();
+					//Set the IP and port number of the server
 					System.out.println("---------------connect to server------------------");
 					ttc.connect("127.0.0.1", 5002, username, password);
 					dispose();
@@ -112,17 +118,27 @@ public class LoginFrame extends JFrame implements Measurable {
 			});
 		}
 	}
-	
+	/**
+	 * @Title: onRegisterClicked
+	 * @Description: 
+	 * @param e
+	 * @return void 
+	 */
 	private void onRegisterClicked(ActionEvent e) {
 		userReg();
 	}
-	
+	/**
+	 * @Title: userReg
+	 * @Description: 
+	 * @param 
+	 * @return void 
+	 */
 	
 	private void userReg() {
 		new XDialog() {
             @Override
             protected void initComponents() {
-                
+                // "Id Number "," Name ", "gender "," Telephone ", "User type"
                 String[] columns = Constants.ColumnName.CUSTOMER;
                 addField(columns[0], "");
                 addField(columns[1], "");

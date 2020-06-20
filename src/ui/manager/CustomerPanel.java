@@ -67,7 +67,7 @@ public class CustomerPanel extends ModelPanel {
         new XDialog() {
             @Override
             protected void initComponents() {
-                
+                // "Id Number "," Name ", "gender "," Telephone ", "User type"
                 String[] columns = Constants.ColumnName.CUSTOMER;
                 addField(columns[0], "");
                 addField(columns[1], "");

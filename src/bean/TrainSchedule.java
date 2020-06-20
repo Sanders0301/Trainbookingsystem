@@ -71,6 +71,13 @@ public class TrainSchedule implements Serializable {
         }
         return res;
     }
+    /**
+     * Calculate additional travel information based on the starting and ending stations: such as the number and price of seats available, mileage and time
+     * @param departStationName
+     * @param arriveStationName
+     * @param isStudent
+     * @return Additional itinerary information
+     */
 
     
     public Extra getExtra(String departStationName, String arriveStationName, boolean isStudent) {
@@ -98,7 +105,7 @@ public class TrainSchedule implements Serializable {
         e.trainId = train.getTrainId();
         e.passTime = getPassTime(arriveTime - departTime);
         // seat extra
-      //  List<SeatAggregate> saList = MySQLManager.getInstance().dao()
+	
         List<SeatAggregate> saList = DBManager.getInstance().dao()
                 .getSeatAggregateInSchedule(this, e.departStationOrder, e.arriveStationOrder);
         for (SeatAggregate sa : saList) {

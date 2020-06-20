@@ -31,6 +31,7 @@ public class TrainOrderPanel extends ModelPanel {
     protected List<TrainOrder> orders;
 
     private void fetchAll() {
+	    
         // orders = MySQLManager.getInstance().dao().getTrainOrderList(100, 0);
 	orders = DBManager.getInstance().dao().getTrainOrderList(100, 0);
     }
@@ -38,7 +39,7 @@ public class TrainOrderPanel extends ModelPanel {
     @Override
     public ListTableModel getTableModel() {
         if (orders == null) fetchAll();
-        
+        //"Order ID"," Customer name ", "train number "," departure station ", "Arrival station "," Amount ", "Order Status"
         return new ListTableModel<TrainOrder>(Constants.ColumnName.ORDER, orders){
             @Override
             public Object getValueAt(int row, int column) {
@@ -92,6 +93,7 @@ public class TrainOrderPanel extends ModelPanel {
         if (train != null && train_id.equals(train.getTrainId())) {
             return true;
         }
+	//The state of the selection box is cleared when checked, so do not double-check
        // train = MySQLManager.getInstance().dao().getTrainById(train_id);
         train = DBManager.getInstance().dao().getTrainById(train_id);
         carriageBox.removeAllItems();
@@ -178,7 +180,7 @@ public class TrainOrderPanel extends ModelPanel {
 
             @Override
             protected void initComponents() {
-                
+                //Ticket booth ID "/ /", "user ID", "train trip ID", "service", "car", "seat number", "seat type", "originating station", "station", "student", "amount", "order status"
                 String[] columns = Constants.ColumnName.ORDER_INSERT;
                 addNumberField(columns[0], null); 
                 addField(columns[1], ""); 
@@ -278,11 +280,11 @@ public class TrainOrderPanel extends ModelPanel {
         new XDialog() {
             @Override
             protected void initComponents() {
-                
+                //"Ticket office ID", "user ID", "train trip ID", "service", "car", "seat number", "seat type", "originating station", "station", "student", "amount", "order status"
                 String[] columns = Constants.ColumnName.ORDER_INSERT;
 //                addLabel("Order ID", String.valueOf(order.getOrderId())); 
 
-                addNumberField(columns[0], order.getTicketPoint().getPointId()); 
+                addNumberField(columns[0], order.getTicketPoint().getPointId()); //Ticket office ID
                 addField(columns[1], order.getBuyer().getIdNum()); 
                 addNumberField(columns[2], order.getTrainSchedule().getScheId()); 
                 addField(columns[3], order.getTrain().getTrainId()).addFocusListener(new FocusAdapter() {

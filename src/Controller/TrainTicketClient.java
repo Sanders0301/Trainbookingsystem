@@ -29,13 +29,17 @@ public class TrainTicketClient {
 	public void connect(String IP, int port, String userName, String password){
             try {
                 System.out.println("--------------client connects to server");
+		//Create client-side Socket, specifying the server address and port
                 socket = new Socket(IP, port);
+		//After establishing the connection, the output stream is obtained and the information is sent to the server
                 setOos(new ObjectOutputStream(socket.getOutputStream()));
-                oos.writeObject(userName +" "+ password);
-                oos.flush();
-               // socket.shutdownOutput();
-              //  oos.close();
-
+		//The output stream is wrapped as a print stream
+		//Send information to the server side
+                oos.writeObject(userName +" "+ password);//Write to memory buffer
+                oos.flush();//Flush the cache and output information to the server side
+                // socket.shutdownOutput();
+                // oos.close();
+		//Gets the input stream and receives the server-side response
                 setOis( new ObjectInputStream(socket.getInputStream()));
                 try {
 				Manager manager = (Manager) ois.readObject();
@@ -54,8 +58,8 @@ public class TrainTicketClient {
 			}
             
 
-            //ois.close();
-        
+        //ois.close();
+        //Close other resources
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {

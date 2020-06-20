@@ -43,7 +43,7 @@ public class XPanel extends JPanel implements Measurable {
     }
 
     /**
-     * 
+     * Subclasses override this method to add custom controls
      */
     protected void initComponents() {
     }
@@ -57,7 +57,7 @@ public class XPanel extends JPanel implements Measurable {
     }
 
     /**
-     * 
+     * Because of the absolute layout, this method is called every time a new control is added 
      */
     private void relayout() {
         int panelWidth = 0, panelHeight;
@@ -144,10 +144,10 @@ public class XPanel extends JPanel implements Measurable {
     }
 
     /**
-     * 
+     * Add a component to the container
      *
      * @param text      
-     * @param component 
+     * @param component show on right side!
      */
     public void addItem(String text, Component component) {
         if (text != null) {
@@ -167,7 +167,7 @@ public class XPanel extends JPanel implements Measurable {
      * {@link JLabel}
      *
      * @param name 
-     * @param text JLabel
+     * @param text JLabel (the initial content)
      * @return {@link JLabel}
      */
     public JLabel addLabel(String name, String text) {
@@ -180,7 +180,7 @@ public class XPanel extends JPanel implements Measurable {
      * {@link JTextField}
      *
      * @param name 
-     * @param text JTextField
+     * @param text JTextField (the initial content)
      * @return {@link JTextField}
      */
     public JTextField addField(String name, String text) {
@@ -194,7 +194,7 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link JTextField}
      *
-     * @param text JTextField
+     * @param text JTextField (Prompt content)
      * @return {@link JTextField}
      */
     public JTextField addHint(String text) {
@@ -207,7 +207,7 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link XPasswordField}
      *
-     * @param text XPasswordField 
+     * @param text XPasswordField (Prompt content)
      * @return {@link XPasswordField}
      */
     public XPasswordField addPasswordHint(String text) {
@@ -218,7 +218,7 @@ public class XPanel extends JPanel implements Measurable {
     }
 
     /**
-     * {@link JTextField}
+     * {@link JTextField},Only non-negative integers can be entered in a text box
      *
      * @param name  
      * @param value 
@@ -245,8 +245,8 @@ public class XPanel extends JPanel implements Measurable {
     }
 
     /**
-     * {@link JTextField}
-     *
+     * {@link JTextField},Only non-negative decimals can be entered in a text field
+     * 
      * @param name  
      * @param value 
      * @return {@link JTextField}
@@ -275,8 +275,8 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link JComboBox}
      *
-     * @param     
-     * @param �
+     * @param   name  
+     * @param �options JComboBox
      * @return {@link JComboBox}
      */
     public JComboBox addComboBox(String name, String... options) {
@@ -288,8 +288,8 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link JCheckBox}
      *
-     * @param  
-     * @param  JCheckBox
+     * @param  name
+     * @param  state JCheckBox
      * @return {@link JCheckBox}
      */
     public JCheckBox addCheckBox(String name, boolean state) {
@@ -301,7 +301,7 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link JTable}
      *
-     * @param 
+     * @param text
      * @return {@link JTable}
      */
     public JTable addTable(String text) {
@@ -312,9 +312,9 @@ public class XPanel extends JPanel implements Measurable {
     }
 
     /**
-     * {@link JButton}
+     * Add left to right on the last line of the container{@link JButton}
      *
-     * @param  
+     * @param  text
      * @return {@link JButton}
      */
     public JButton addBtn(String text) {
@@ -328,8 +328,8 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link JTextField}
      *
-     * @param  
-     * @return JTextField
+     * @param  n The sequence number of the control
+     * @return JTextField, The current content
      */
     public String field(int n) {
         return ((JTextField) componentList.get(n)).getText();
@@ -338,8 +338,8 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link JTextField}
      *
-     * @param  
-     * @return JTextField
+     * @param  n
+     * @return JTextField, The current content
      */
     public int fieldInt(int n) {
         return Integer.parseInt(((JTextField) componentList.get(n)).getText());
@@ -348,7 +348,7 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link JTextField}
      *
-     * @param 
+     * @param n
      * @return JTextField
      */
     public float fieldFloat(int n) {
@@ -358,8 +358,8 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link JComboBox}
      *
-     * @param 
-     * @return JComboBox
+     * @param n
+     * @return JComboBox, The currently selected index value (starting at 0)
      */
     public int option(int n) {
         return ((JComboBox) componentList.get(n)).getSelectedIndex();
@@ -368,8 +368,8 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link JComboBox}
      *
-     * @param  
-     * @return JComboBox
+     * @param  n
+     * @return JComboBox, The current state
      */
     public Object optionValue(int n) {
         return ((JComboBox) componentList.get(n)).getSelectedItem();
@@ -378,8 +378,8 @@ public class XPanel extends JPanel implements Measurable {
     /**
      * {@link JCheckBox}
      *
-     * @param  
-     * @return JCheckBox
+     * @param  n
+     * @return JCheckBox, The currently selected index value (starting at 0)
      */
     public boolean checked(int n) {
         return ((JCheckBox) componentList.get(n)).isSelected();
@@ -413,7 +413,7 @@ public class XPanel extends JPanel implements Measurable {
     }
 
     /**
-     * Table
+     * Fixed length and width of the Table control
      */
     private static class ComponentScroll extends JScrollPane implements Measurable {
         private static final int TABLE_WIDTH = 300;

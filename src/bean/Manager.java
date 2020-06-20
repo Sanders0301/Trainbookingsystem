@@ -1,7 +1,7 @@
 package bean;
 
 import java.io.Serializable;
-
+//manager information
 public class Manager implements Serializable{
 	private static final long serialVersionUID = 1L;
     private int manager_id;

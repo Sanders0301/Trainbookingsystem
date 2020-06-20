@@ -71,7 +71,7 @@ public class ManagerPanel extends ModelPanel {
         new XDialog() {
             @Override
             protected void initComponents() {
-                
+                //administrator ID ", "" ticket office ID", "user name", "password", "name", "gender", "administrator category"
                 String[] columns = Constants.ColumnName.MANAGER;
                 addNumberField(columns[1], 0);
                 addField(columns[2], "");

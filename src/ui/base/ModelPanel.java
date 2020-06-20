@@ -23,7 +23,7 @@ public abstract class ModelPanel extends XPanel {
     private DefaultTableModel model;
 
     public ModelPanel(){
-        
+       //Custom - styled tables 
         table = new XTable();
         model = getTableModel();
         setModel(model);
@@ -83,9 +83,9 @@ public abstract class ModelPanel extends XPanel {
     }
 
     private void setModel(TableModel model){
-        
+        //Column width
         setColumnWeight();
-        
+        //The sorting
         RowSorter<TableModel> sorter = new TableRowSorter<>(model);
         table.setRowSorter(sorter);
         table.setModel(model);
@@ -122,14 +122,20 @@ public abstract class ModelPanel extends XPanel {
             }
         });
     }
-
+    /**Gets the width of each column in the table, which can be overridden by a subclass
+     * 
+     * @param columnCount 
+     * @return 
+     */
     
     public float[] getColumnWeight(int columnCount){
         float[] defaultWeight = new float[columnCount];
         Arrays.fill(defaultWeight, 1.0f);
         return defaultWeight;
     }
-
+/**
+     * Update the data in the Table,{@link #getTableModel()}
+     */
     
     public void refresh(){
         TableModel tableModel = getTableModel();

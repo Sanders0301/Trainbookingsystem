@@ -8,7 +8,12 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ * @ClassName: TestDerby
+ * @Description: 
+ * @author 
+ * @date 
+ */
 public class TestDerby {
 	public static Connection conn;
 	public static void main(String[] args) {

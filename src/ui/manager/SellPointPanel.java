@@ -107,7 +107,7 @@ public class SellPointPanel extends ModelPanel {
         new XDialog() {
             @Override
             protected void initComponents() {
-                
+                // "Ticket Office ID"," Ticket Office name ", "Ticket Office Address "," Business Hours"
                 String[] columns = Constants.ColumnName.TICKET_POINT;
                 addLabel(columns[0], String.valueOf(point.getPointId()));
                 addField(columns[1], point.getUsername());

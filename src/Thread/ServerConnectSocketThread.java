@@ -32,7 +32,7 @@ public class ServerConnectSocketThread implements Runnable{
     private PrintWriter pw = null;  
     private static ObjectOutputStream oos;
     private static ObjectInputStream ois;
-    
+    //Declare the constructor to receive the client request socket
     public ServerConnectSocketThread(Socket s)
     {   
         this.socket=s;
@@ -48,9 +48,9 @@ public class ServerConnectSocketThread implements Runnable{
 
 
         try {
-            
+            //Establish communication with the client, obtain input stream, read and fetch information provided by the client
             ois = new ObjectInputStream(socket.getInputStream());
-            
+            //Gets the output stream in response to the client's request
             oos = new ObjectOutputStream(socket.getOutputStream());
             String data = null;
 			try {
@@ -59,10 +59,10 @@ public class ServerConnectSocketThread implements Runnable{
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
-            if(data != null){
+            if(data != null){//Iterate through the client's information
                 System.out.println("The client submits information is:"+data);
                 String[] Info = data.split(" ");
-               // Manager manager = MySQLManager.getInstance().dao().login(Info[0], Info[1]);
+               
 	        Manager manager = DBManager.getInstance().dao().login(Info[0], Info[1]);
                 if (manager != null) {
                 	oos.writeObject(manager);
@@ -167,7 +167,7 @@ public class ServerConnectSocketThread implements Runnable{
         					}
         				}
         		}
-            //socket.shutdownInput();
+            //socket.shutdownInput();//Iterate through the client's information
         } catch (IOException e) {
             e.printStackTrace();
         }finally{

@@ -29,9 +29,9 @@ public class XTable extends JTable {
                                                        Object value, boolean isSelected, boolean hasFocus,
                                                        int row, int column) {
             if (row % 2 == 0)
-                setBackground(new Color(255, 255, 255, 30)); 
+                setBackground(new Color(255, 255, 255, 30)); //Sets the base color for odd rows
             else if (row % 2 == 1)
-                setBackground(new Color(0, 0, 0, 10)); 
+                setBackground(new Color(0, 0, 0, 10)); //Sets the base color for an even number of rows
             return super.getTableCellRendererComponent(table, value,
                     isSelected, hasFocus, row, column);
         }

@@ -2,7 +2,7 @@ package bean;
 
 import java.io.Serializable;
 import java.util.Date;
-
+// customer information
 public class Customer implements Serializable{
 	private static final long serialVersionUID = 7883012890434315219L;
 	private String name;

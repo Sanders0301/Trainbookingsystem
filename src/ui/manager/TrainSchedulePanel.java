@@ -68,7 +68,7 @@ public class TrainSchedulePanel extends ModelPanel {
         new XDialog() {
             @Override
             protected void initComponents() {
-                
+                //"Train Journey ID"," Departure Time ", "Pre-sale Time "," Speed matching ", "Train number"
                 String[] columns = Constants.ColumnName.SCHEDULE;
                 addField(columns[1], "");
                 addField(columns[2], "");
@@ -126,7 +126,7 @@ public class TrainSchedulePanel extends ModelPanel {
             @Override
             protected void initComponents() {
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                
+                //"Train Journey ID"," Departure Time ", "Pre-sale Time "," Speed matching ", "Train number"
                 String[] columns = Constants.ColumnName.SCHEDULE;
                 addLabel(columns[0], String.valueOf(schedule.getScheId()));
                 addField(columns[1], format.format(schedule.getDepartTime()));

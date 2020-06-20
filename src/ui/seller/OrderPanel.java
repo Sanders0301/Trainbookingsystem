@@ -187,7 +187,7 @@ public class OrderPanel extends JPanel {
     }
 
     /**
-     * ��������
+     * Display train start time, start station, time, train number name��������
      */
     private class TrainInfoItem extends JPanel implements Measurable {
         private TrainSchedule schedule;
@@ -291,7 +291,7 @@ public class OrderPanel extends JPanel {
     }
 
     /**
-     * ��ʾ�г���Ϣ��Ԥ����Ϣ
+     * Show train information and reservation information
      */
     private class ScheduleItem extends JPanel implements Measurable {
         private TrainSchedule schedule;
@@ -497,7 +497,7 @@ public class OrderPanel extends JPanel {
 	                    pay.popup("Waiting for user payment...");
 	                    if (pay.result) {
 	                        order.setOrderState(TrainOrder.STATE_PAYED);
-	                        //Socket����������������Oder�����ݸ��¡�
+	                        //Socket, transfer to server for Oder table data update.
 	                        oos.writeObject(order);
 	                        oos.flush();
 	                        //MySQLManager.getInstance().dao().updateTrainOrder(order);
