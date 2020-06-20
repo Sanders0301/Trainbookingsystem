@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/ui/manager/SellPointPanel.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/ui/manager/ManagerPanel.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/bean/SeatAggregate.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/test/bean/CustomerTest.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/ui/manager/TrainOrderPanel.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/bean/Seat.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/bean/Passby.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/ui/manager/RegisterPanel.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/bean/SeatGroup.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/bean/Sex.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/ui/manager/TrainSchedulePanel.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/ui/manager/TrainPanel.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/dao/StationDAO.java</file>
+            <file>file:/C:/Users/wxy20/Desktop/AUT/P3/TrainTicketsManager/src/dao/MySQLManager.java</file>
+        </group>
+    </open-files>
+</project-private>

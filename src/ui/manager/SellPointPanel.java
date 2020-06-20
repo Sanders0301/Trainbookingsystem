@@ -1,0 +1,132 @@
+package ui.manager;
+
+
+import java.awt.*;
+import java.util.List;
+
+import bean.TicketPoint;
+import dao.MySQLManager;
+import dao.DBManager;
+import ui.base.ListTableModel;
+import ui.base.ModelPanel;
+import ui.widget.XDialog;
+import utils.Constants;
+
+public class SellPointPanel extends ModelPanel {
+    private List<TicketPoint> ticketPoints;
+
+    private void fetchAll(){
+      //  ticketPoints = MySQLManager.getInstance().dao().getAllTicketPoints();
+        ticketPoints = DBManager.getInstance().dao().getAllTicketPoints();
+    }
+
+    @Override
+    public ListTableModel getTableModel() {
+        if(ticketPoints == null) fetchAll();
+        return new ListTableModel<TicketPoint>(Constants.ColumnName.TICKET_POINT, ticketPoints){
+            @Override
+            public Object getValueAt(int row, int column) {
+                TicketPoint point = ticketPoints.get(row);
+                switch (column){
+                    case 0:
+                        return point.getPointId();
+                    case 1:
+                        return point.getUsername();
+                    case 2:
+                        return point.getAddress();
+                    case 3:
+                        return point.getOpenTime();
+                }
+                return null;
+            }
+        };
+    }
+
+    @Override
+    public void onSearch(String key) {
+        EventQueue.invokeLater(() -> {
+            if (key.equals("")) {
+                fetchAll();
+            } else {
+               // ticketPoints = MySQLManager.getInstance().dao().searchTicketPoints(key);
+	        ticketPoints = DBManager.getInstance().dao().searchTicketPoints(key);
+            }
+            refresh();
+        });
+    }
+
+    @Override
+    public void onInsert() {
+        new XDialog() {
+            @Override
+            protected void initComponents() {
+                
+                String[] columns = Constants.ColumnName.TICKET_POINT;
+                addField(columns[1], "");
+                addField(columns[2], "");
+                addField(columns[3], "");
+            }
+
+            @Override
+            protected void onOK() {
+                TicketPoint point = new TicketPoint();
+                point.setUsername(field(0));
+                point.setAddress(field(1));
+                point.setOpenTime(field(2));
+                EventQueue.invokeLater(() -> {
+                  //  MySQLManager.getInstance().dao().insertTicketPoint(point);
+		    DBManager.getInstance().dao().insertTicketPoint(point);
+                    fetchAll();
+                    refresh();
+                    super.onOK();
+                });
+            }
+        }.popup("Add ticket office");
+    }
+
+    @Override
+    public void onDelete(int[] selectedRows) {
+        if(selectedRows.length <= 0) return;
+        EventQueue.invokeLater(() -> {
+            for (int row : selectedRows) {
+                TicketPoint ticketPoint = ticketPoints.get(row);
+               // MySQLManager.getInstance().dao().deleteTicketPoint(ticketPoint);
+	        DBManager.getInstance().dao().deleteTicketPoint(ticketPoint);
+            }
+            for (int i = selectedRows.length - 1; i >= 0; i--) {
+                ticketPoints.remove(i);
+            }
+            refresh();
+        });
+    }
+
+    @Override
+    public void onUpdate(int selectedRow) {
+        if(selectedRow < 0) return;
+        TicketPoint point = ticketPoints.get(selectedRow);
+        new XDialog() {
+            @Override
+            protected void initComponents() {
+                
+                String[] columns = Constants.ColumnName.TICKET_POINT;
+                addLabel(columns[0], String.valueOf(point.getPointId()));
+                addField(columns[1], point.getUsername());
+                addField(columns[2], point.getAddress());
+                addField(columns[3], point.getOpenTime());
+            }
+
+            @Override
+            protected void onOK() {
+                point.setUsername(field(1));
+                point.setAddress(field(2));
+                point.setOpenTime(field(3));
+                EventQueue.invokeLater(() -> {
+                  //  MySQLManager.getInstance().dao().insertTicketPoint(point);
+		    DBManager.getInstance().dao().insertTicketPoint(point);
+                    refresh();
+                    super.onOK();
+                });
+            }
+        }.popup("Update Ticket office");
+    }
+}
